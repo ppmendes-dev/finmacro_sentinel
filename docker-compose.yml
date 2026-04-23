@@ -1,0 +1,36 @@
+services:
+  db:
+    image: ankane/pgvector:latest
+    container_name: sentinel-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=sentinel-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis/redis-stack:latest
+    container_name: sentinel-redis
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+
+  app:
+    build: .
+    container_name: sentinel-app
+    volumes:
+      - .:/app
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    command: ["streamlit", "run", "frontend/script.py", "--server.address=0.0.0.0"] 
+
+volumes:
+  postgres_data:
