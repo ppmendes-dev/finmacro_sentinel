@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain.agents import create_agent
 from mcp_server.main import get_ticker_data, get_ticker_news, search_similar_news
