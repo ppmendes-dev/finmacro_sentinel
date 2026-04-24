@@ -1,10 +1,10 @@
-# 🛡️ Sentinel 2026: AI Financial Intelligence Agent
+# Sentinel 2026: AI Financial Intelligence Agent
 
-O **Sentinel 2026** é um ecossistema de agentes autônomos projetado para análise macroeconômica e monitoramento de ativos em tempo real. Diferente de chatbots convencionais, o Sentinel utiliza uma arquitetura de microserviços orquestrada via Docker, focada em persistência de dados de longo prazo (RAG) e otimização de custos operacionais.
+O **Sentinel 2026** é um agente autônomo projetado para análise macroeconômica e monitoramento de ativos em tempo real. Diferente de chatbots convencionais, o Sentinel utiliza uma arquitetura de microserviços orquestrada via Docker, focada em persistência de dados de longo prazo (RAG) e otimização de custos operacionais.
 
 ---
 
-## 🏗️ Arquitetura e Fluxo de Dados
+##  Arquitetura e Fluxo de Dados
 
 O sistema foi desenhado para ser resiliente e escalável, dividindo-se em três pilares fundamentais:
 
@@ -26,7 +26,7 @@ Um dos maiores desafios de agentes de IA é o custo do "Context Window". O Senti
 
 ---
 
-## 🛠️ Stack Tecnológica
+##  Stack Tecnológica
 
 | Componente | Tecnologia | Função |
 | :--- | :--- | :--- |
@@ -39,7 +39,7 @@ Um dos maiores desafios de agentes de IA é o custo do "Context Window". O Senti
 
 ---
 
-## 🚀 Como Executar
+##  Como Executar
 
 ### Pré-requisitos
 * Docker e Docker Compose instalados.
@@ -66,7 +66,7 @@ Um dos maiores desafios de agentes de IA é o custo do "Context Window". O Senti
 
 ---
 
-## 📈 Diferenciais de Engenharia
+##  Diferenciais de Engenharia
 * **Resiliência:** Tratamento de erros de API (429/503) com políticas de retry via `tenacity`.
 * **Observabilidade:** Interface visual via **RedisInsight** (porta 8001) para monitorar o estado dos checkpoints em tempo real.
 * **Hot-Reload:** Desenvolvimento facilitado com volumes Docker que permitem alteração no código sem reiniciar os containers.
