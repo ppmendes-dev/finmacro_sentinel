@@ -10,14 +10,13 @@ from langgraph.checkpoint.redis import RedisSaver
 
 load_dotenv()
 
-redis_url = "redis://redis:6379"
-memory = RedisSaver(redis_url)
+
+memory = RedisSaver("redis://redis:6379")
+memory.setup()
 llm = ChatGoogleGenerativeAI(
     model='gemini-3-flash-preview',
     temperature=0.7,
     google_api_key=os.environ.get('GEMINI_API_KEY'),
-
-
 )
 
 tools = [get_ticker_news, get_ticker_data, search_similar_news]

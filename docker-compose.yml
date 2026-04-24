@@ -5,11 +5,12 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=sentinel-db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123456
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_DB: tickers
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+    networks:
+      - sentinel-network
+
 
   redis:
     image: redis/redis-stack:latest
@@ -17,20 +18,30 @@ services:
     ports:
       - "6379:6379"
       - "8001:8001"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - sentinel-network
+
 
   app:
     build: .
     container_name: sentinel-app
-    volumes:
-      - .:/app
+    command: ["streamlit", "run", "frontend/script.py", "--server.address=0.0.0.0", "--server.port=8501"]
     ports:
       - "8501:8501"
-    env_file:
-      - .env
     depends_on:
-      - db
-      - redis
-    command: ["streamlit", "run", "frontend/script.py", "--server.address=0.0.0.0"] 
+      redis:
+        condition: service_healthy
+    networks:
+      - sentinel-network
 
-volumes:
-  postgres_data:
+
+
+
+networks:
+  sentinel-network:
+    driver: bridge
