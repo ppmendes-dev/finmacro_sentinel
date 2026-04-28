@@ -4,7 +4,10 @@ import os
 import finnhub
 from datetime import datetime
 import yfinance as yf
+from dotenv import load_dotenv
 
+
+load_dotenv()
 class TimeMetrics:
     def __init__(self):
 

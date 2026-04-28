@@ -11,7 +11,7 @@ from langgraph.checkpoint.redis import RedisSaver
 load_dotenv()
 
 
-memory = RedisSaver("redis://redis:6379")
+memory = RedisSaver("redis://sentinel-redis:6379")
 memory.setup()
 llm = ChatGoogleGenerativeAI(
     model='gemini-3-flash-preview',
