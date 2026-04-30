@@ -41,9 +41,9 @@ with st.sidebar:
 
     if selected_session != "Selecione..." and "thread_id" not in st.session_state:
         st.session_state.thread_id = selected_session
-        # Aqui você poderia carregar o histórico do Redis para o st.session_state
 
-# Inicialização do estado da mensagem
+
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "thread_id" not in st.session_state:
@@ -59,7 +59,7 @@ for msg in st.session_state.messages:
         if "chart_data" in msg:
             st.line_chart(msg["chart_data"])
 
-# Input do Usuário
+
 if prompt := st.chat_input("Ex: Qual a tendência da NVDA e mostre o gráfico"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -74,8 +74,7 @@ if prompt := st.chat_input("Ex: Qual a tendência da NVDA e mostre o gráfico"):
             answer = response["messages"][-1].content
             st.markdown(answer)
 
-            # --- LÓGICA DE GRÁFICO ---
-            # Vamos verificar se o Agente mencionou algum ticker e buscar no banco
+
             chart_to_show = None
             for word in prompt.upper().split():
                 ticker_obj = Ticker.objects.filter(symbol=word).first()
@@ -88,7 +87,7 @@ if prompt := st.chat_input("Ex: Qual a tendência da NVDA e mostre o gráfico"):
                     chart_to_show = df
                     break
 
-            # Salva no histórico da sessão do Streamlit
+            
             new_msg = {"role": "assistant", "content": answer}
             if chart_to_show is not None:
                 new_msg["chart_data"] = chart_to_show
