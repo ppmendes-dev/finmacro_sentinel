@@ -1,3 +1,5 @@
+import time
+
 import httpx
 import asyncio
 import os
@@ -132,6 +134,8 @@ class TimeMetrics:
     async def ticker_current_price(self, symbol):
         quote = await asyncio.to_thread(self.__finnhub.quote, symbol)
         return quote.get('c', 0)
+
+
 
 
 

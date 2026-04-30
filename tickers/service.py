@@ -16,10 +16,10 @@ class TickerService:
         Busca dados técnicos de forma sequêncial para evitar da API dar erro 429
         """
         monthly = await self._time_data.monthly_metrics(symbol)
-        await asyncio.sleep(3.5)
+        await asyncio.sleep(5)
 
         sma = await self._time_data.get_sma(symbol)
-        await asyncio.sleep(3.5)
+        await asyncio.sleep(5)
 
         rsi = await self._time_data.get_rsi(symbol)
 
