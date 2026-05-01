@@ -26,8 +26,8 @@ class TickerService:
 
         return dict(
             monthly_history=monthly,
-            sma=monthly,
-            rsi=monthly,
+            sma=sma,
+            rsi=rsi,
             sync_at=timezone.now().isoformat()
         )
 
