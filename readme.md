@@ -28,14 +28,14 @@ Um dos maiores desafios de agentes de IA é o custo do "Context Window". O Senti
 
 ##  Stack Tecnológica
 
-| Componente | Tecnologia | Função |
-| :--- | :--- | :--- |
-| **LLM** | Google Gemini 1.5 Flash | Cérebro e raciocínio lógico |
-| **Orquestração de IA** | LangChain & LangGraph | Grafo de estados e controle de fluxo |
-| **Banco de Dados** | PostgreSQL + PGVector | Armazenamento de dados e busca vetorial |
-| **Cache & Memória** | Redis Stack | Persistência de sessão e checkpoints |
-| **Interface** | Streamlit | Dashboard interativo e chat |
-| **Infraestrutura** | Docker & Docker Compose | Containerização e padronização de ambiente |
+| Componente | Tecnologia                    | Função |
+| :--- |:------------------------------| :--- |
+| **LLM** | Google Gemini 3 Flash Preview | Cérebro e raciocínio lógico |
+| **Orquestração de IA** | LangChain & LangGraph         | Grafo de estados e controle de fluxo |
+| **Banco de Dados** | PostgreSQL + PGVector         | Armazenamento de dados e busca vetorial |
+| **Cache & Memória** | Redis Stack                   | Persistência de sessão e checkpoints |
+| **Interface** | Streamlit                     | Dashboard interativo e chat |
+| **Infraestrutura** | Docker & Docker Compose       | Containerização e padronização de ambiente |
 
 ---
 
@@ -43,7 +43,7 @@ Um dos maiores desafios de agentes de IA é o custo do "Context Window". O Senti
 
 ### Pré-requisitos
 * Docker e Docker Compose instalados.
-* Chave de API do Google Gemini e Tavily (configuradas no arquivo `.env`).
+* Chave de API do Google Gemini, Exa, Alpha, Finnhub, Django_secret_key, e credênciais de acesso para o postgresql (configuradas no arquivo `.env`).
 
 ### Inicialização
 1.  **Clonar o repositório:**
@@ -56,12 +56,8 @@ Um dos maiores desafios de agentes de IA é o custo do "Context Window". O Senti
 3.  **Subir os containers:**
     ```bash
     docker compose up --build -d
-    ```
-4.  **Configurar o Banco de Dados (Primeira execução):**
-    ```bash
-    docker exec -it sentinel-app python manage.py migrate
-    ```
-5.  **Acessar a Plataforma:**
+   
+4. **Acessar a Plataforma:**
     Abra o navegador em `http://localhost:8501`.
 
 ---
